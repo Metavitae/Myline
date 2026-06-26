@@ -644,7 +644,7 @@
     <a href="#" class="btn-main" style="max-width:280px;display:inline-block;text-align:center" id="hero-btn1" onclick="openModal(event)">—</a>
   </div>
   <div class="hero-img-zone">
-    <img src="https://source.unsplash.com/featured/800x520/?phone,technology,minimal" alt="MyLine">
+    <img src="https://picsum.photos/id/3/800/520" alt="MyLine">
   </div>
 </section>
 
@@ -659,11 +659,11 @@
 </section>
 
 <div class="photo-strip">
-  <div class="strip-photo"><img src="https://source.unsplash.com/featured/270x180/?video,call,laptop" alt=""></div>
+  <div class="strip-photo"><img src="https://picsum.photos/id/20/270/180" alt=""></div>
   <div class="strip-divider"></div>
-  <div class="strip-photo"><img src="https://source.unsplash.com/featured/270x180/?family,together,happy" alt=""></div>
+  <div class="strip-photo"><img src="https://picsum.photos/id/21/270/180" alt=""></div>
   <div class="strip-divider"></div>
-  <div class="strip-photo"><img src="https://source.unsplash.com/featured/270x180/?green,architecture,sustainable" alt=""></div>
+  <div class="strip-photo"><img src="https://picsum.photos/id/28/270/180" alt=""></div>
 </div>
 
 <section class="features">
@@ -697,19 +697,19 @@
 </section>
 
 <div class="photo-strip" style="height:200px;border:none;border-top:2px solid var(--ink)">
-  <div class="strip-photo" style="flex:1"><img src="https://source.unsplash.com/featured/400x200/?home,working,connected" alt=""></div>
+  <div class="strip-photo" style="flex:1"><img src="https://picsum.photos/id/48/400/200" alt=""></div>
   <div class="strip-divider"></div>
-  <div class="strip-photo" style="flex:1"><img src="https://source.unsplash.com/featured/400x200/?nature,technology,future" alt=""></div>
+  <div class="strip-photo" style="flex:1"><img src="https://picsum.photos/id/29/400/200" alt=""></div>
 </div>
 
 <section class="testimonials">
   <h2 class="testimonials-h2" id="test-h2">—</h2>
   <div class="testimonial-card">
-    <div class="test-portrait"><img src="https://source.unsplash.com/featured/104x104/?woman,portrait,professional" alt=""></div>
+    <div class="test-portrait"><img src="https://picsum.photos/id/1005/104/104" alt=""></div>
     <div class="test-body"><p id="t1q">—</p><div class="test-name" id="t1n">—</div></div>
   </div>
   <div class="testimonial-card">
-    <div class="test-portrait"><img src="https://source.unsplash.com/featured/104x104/?man,portrait,smile" alt=""></div>
+    <div class="test-portrait"><img src="https://picsum.photos/id/1012/104/104" alt=""></div>
     <div class="test-body"><p id="t2q">—</p><div class="test-name" id="t2n">—</div></div>
   </div>
 </section>
@@ -895,16 +895,45 @@ function fmtPrice(symbol, amount, currency) {
   return symbol + amount.toFixed(2);
 }
 
-async function detectCountry() {
+function detectCountry() {
   try {
-    const r = await fetch('https://ipapi.co/json/');
-    const d = await r.json();
-    return d.country_code || 'DEFAULT';
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    const lang = (navigator.language || navigator.languages[0] || 'en').toLowerCase();
+    
+    const tzMap = {
+      'America/Mexico_City':'MX','America/Monterrey':'MX','America/Merida':'MX',
+      'America/Tijuana':'MX','America/Cancun':'MX','America/Chihuahua':'MX',
+      'America/Bogota':'CO','America/Lima':'PE','America/Santiago':'CL',
+      'America/Argentina/Buenos_Aires':'AR','America/Caracas':'VE',
+      'America/Sao_Paulo':'BR','America/Manaus':'BR','America/Belem':'BR',
+      'America/Fortaleza':'BR','America/Recife':'BR','America/Bahia':'BR',
+      'Europe/Lisbon':'PT','Atlantic/Azores':'PT',
+      'Europe/Madrid':'ES','Africa/Ceuta':'ES',
+      'America/New_York':'US','America/Chicago':'US','America/Denver':'US',
+      'America/Los_Angeles':'US','America/Phoenix':'US','America/Anchorage':'US',
+      'America/Honolulu':'US','America/Toronto':'CA','America/Vancouver':'CA',
+      'America/Winnipeg':'CA','America/Halifax':'CA','America/Edmonton':'CA',
+      'Europe/London':'GB','Australia/Sydney':'AU','Australia/Melbourne':'AU',
+      'Australia/Brisbane':'AU','Australia/Perth':'AU'
+    };
+    
+    if (tzMap[tz]) return Promise.resolve(tzMap[tz]);
+    
+    if (lang.startsWith('pt-br') || lang === 'pt') return Promise.resolve('BR');
+    if (lang.startsWith('pt')) return Promise.resolve('PT');
+    if (lang.startsWith('es-mx')) return Promise.resolve('MX');
+    if (lang.startsWith('es-co')) return Promise.resolve('CO');
+    if (lang.startsWith('es-ar')) return Promise.resolve('AR');
+    if (lang.startsWith('es-cl')) return Promise.resolve('CL');
+    if (lang.startsWith('es-pe')) return Promise.resolve('PE');
+    if (lang.startsWith('es')) return Promise.resolve('MX');
+    if (lang.startsWith('en-gb')) return Promise.resolve('GB');
+    if (lang.startsWith('en-au')) return Promise.resolve('AU');
+    if (lang.startsWith('en-ca')) return Promise.resolve('CA');
+    
+    return Promise.resolve('DEFAULT');
   } catch(e) {
-    const lang = navigator.language || 'en';
-    if (lang.startsWith('pt')) return 'BR';
-    if (lang.startsWith('es')) return 'MX';
-    return 'DEFAULT';
+    return Promise.resolve('DEFAULT');
   }
 }
 
