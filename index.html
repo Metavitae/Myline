@@ -13,7 +13,6 @@
     --forest: #1A3A2A;
     --leaf: #2D6A4F;
     --sun: #F4A228;
-    --sky: #74C2E1;
     --sand: #F5F0E8;
     --white: #FAFAF8;
     --ink: #0F1F17;
@@ -22,7 +21,6 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -32,22 +30,8 @@
     overflow-x: hidden;
   }
 
-  /* BAUHAUS GRID LINES — decorative structural element */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0;
-    width: 1px; height: 100%;
-    background: rgba(26,58,42,0.08);
-    left: 50%;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* NAV */
   nav {
-    position: sticky;
-    top: 0;
+    position: sticky; top: 0;
     background: var(--forest);
     z-index: 100;
     display: flex;
@@ -65,9 +49,7 @@
     letter-spacing: -0.5px;
   }
 
-  .nav-mark span {
-    color: var(--sun);
-  }
+  .nav-mark span { color: var(--sun); }
 
   .nav-cta {
     background: var(--sun);
@@ -78,10 +60,8 @@
     padding: 8px 16px;
     border: none;
     cursor: pointer;
-    letter-spacing: 0.3px;
   }
 
-  /* HERO — FULL STRUCTURAL */
   .hero {
     background: var(--forest);
     min-height: 100svh;
@@ -91,7 +71,6 @@
     overflow: hidden;
   }
 
-  /* Bauhaus geometric accent */
   .hero::before {
     content: '';
     position: absolute;
@@ -100,16 +79,6 @@
     border-radius: 50%;
     background: var(--sun);
     opacity: 0.12;
-    pointer-events: none;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: 40px; left: -30px;
-    width: 120px; height: 120px;
-    background: var(--sky);
-    opacity: 0.15;
     pointer-events: none;
   }
 
@@ -152,10 +121,7 @@
     margin-bottom: 20px;
   }
 
-  .hero-h1 em {
-    font-style: normal;
-    color: var(--sun);
-  }
+  .hero-h1 em { font-style: normal; color: var(--sun); }
 
   .hero-body {
     font-size: 15px;
@@ -165,53 +131,21 @@
     max-width: 340px;
   }
 
-  /* IMAGE ZONE A — HERO FULL BLEED PHOTO */
   .hero-img-zone {
     width: 100%;
     height: 260px;
     overflow: hidden;
-    position: relative;
     flex-shrink: 0;
     border-top: 3px solid var(--sun);
   }
 
-  .hero-img {
-    width: 100%;
-    height: 100%;
+  .hero-img-zone img {
+    width: 100%; height: 100%;
     object-fit: cover;
     display: block;
     filter: saturate(0.85) brightness(0.9);
   }
 
-  .hero-img-fallback {
-    width: 100%;
-    height: 100%;
-    background: var(--leaf);
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-  }
-
-  .zone-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.5);
-    text-transform: uppercase;
-    text-align: center;
-    padding: 0 20px;
-  }
-
-  .zone-tag strong {
-    display: block;
-    font-size: 12px;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 4px;
-  }
-
-  /* STAT BAR */
   .stat-bar {
     background: var(--sun);
     display: grid;
@@ -231,7 +165,7 @@
   .stat-num {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: 26px;
+    font-size: 24px;
     color: var(--ink);
     line-height: 1;
     letter-spacing: -1px;
@@ -239,14 +173,13 @@
 
   .stat-label {
     font-family: 'DM Mono', monospace;
-    font-size: 8px;
+    font-size: 7px;
     color: var(--forest);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 2px;
   }
 
-  /* HOW IT WORKS — BAUHAUS NUMBERED STEPS */
   .how {
     padding: 40px 20px;
     background: var(--mist);
@@ -276,7 +209,7 @@
   .how-h2 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 28px;
     letter-spacing: -1px;
     color: var(--forest);
     line-height: 1.1;
@@ -306,7 +239,6 @@
     font-size: 16px;
     color: var(--forest);
     margin-bottom: 4px;
-    letter-spacing: -0.3px;
   }
 
   .step-content p {
@@ -315,7 +247,6 @@
     line-height: 1.5;
   }
 
-  /* PHOTO STRIP */
   .photo-strip {
     display: flex;
     gap: 0;
@@ -325,41 +256,16 @@
     overflow: hidden;
   }
 
-  .strip-photo {
-    flex: 1;
-    overflow: hidden;
-    position: relative;
-  }
+  .strip-photo { flex: 1; overflow: hidden; }
 
   .strip-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
     filter: saturate(0.8);
-    transition: filter 0.3s;
   }
 
-  .strip-photo-placeholder {
-    width: 100%;
-    height: 100%;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+  .strip-divider { width: 2px; background: var(--ink); flex-shrink: 0; }
 
-  .strip-photo:nth-child(1) .strip-photo-placeholder { background: #2D6A4F; }
-  .strip-photo:nth-child(2) .strip-photo-placeholder { background: #1A3A2A; }
-  .strip-photo:nth-child(3) .strip-photo-placeholder { background: #74C2E1; }
-
-  .strip-divider {
-    width: 2px;
-    background: var(--ink);
-    flex-shrink: 0;
-  }
-
-  /* FEATURES GRID */
   .features {
     padding: 36px 20px;
     background: var(--white);
@@ -388,11 +294,7 @@
     padding: 16px 14px;
   }
 
-  .feature-icon {
-    font-size: 20px;
-    margin-bottom: 6px;
-    display: block;
-  }
+  .feature-icon { font-size: 20px; margin-bottom: 6px; display: block; }
 
   .feature-title {
     font-family: 'Space Grotesk', sans-serif;
@@ -400,16 +302,80 @@
     font-size: 13px;
     color: var(--forest);
     margin-bottom: 4px;
-    letter-spacing: -0.2px;
   }
 
-  .feature-desc {
-    font-size: 11px;
-    color: #5A7060;
-    line-height: 1.5;
+  .feature-desc { font-size: 11px; color: #5A7060; line-height: 1.5; }
+
+  /* LOCAL STATS */
+  .local-stats {
+    padding: 36px 20px;
+    background: var(--mist);
+    border-top: 2px solid rgba(26,58,42,0.1);
+    border-bottom: 2px solid rgba(26,58,42,0.1);
   }
 
-  /* PRICING */
+  .stats-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--leaf);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .stats-h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.8px;
+    color: var(--forest);
+    margin-bottom: 20px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(26,58,42,0.1);
+    margin-bottom: 12px;
+  }
+
+  .stat-cell {
+    background: var(--white);
+    padding: 14px 12px;
+  }
+
+  .stat-cell-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--sun);
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-cell-label { font-size: 10px; color: #5A7060; line-height: 1.4; }
+
+  .ops-block {
+    background: var(--white);
+    padding: 14px;
+    border: 1px solid rgba(26,58,42,0.1);
+  }
+
+  .ops-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    color: var(--leaf);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .ops-text { font-size: 12px; color: var(--leaf); font-weight: 500; line-height: 1.8; }
+
   .pricing {
     padding: 36px 20px;
     background: var(--forest);
@@ -422,6 +388,7 @@
     color: var(--sun);
     text-transform: uppercase;
     margin-bottom: 12px;
+    display: block;
   }
 
   .pricing-h2 {
@@ -443,7 +410,6 @@
     align-items: center;
     gap: 14px;
     cursor: pointer;
-    transition: background 0.2s, border-color 0.2s;
   }
 
   .plan-card.featured {
@@ -454,18 +420,21 @@
   .plan-price {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 28px;
     color: var(--sun);
-    letter-spacing: -1.5px;
-    min-width: 72px;
+    letter-spacing: -1px;
+    min-width: 90px;
     line-height: 1;
   }
 
   .plan-price small {
-    font-size: 12px;
-    letter-spacing: 0;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
     font-weight: 400;
-    color: rgba(244,162,40,0.7);
+    color: rgba(244,162,40,0.6);
+    display: block;
+    margin-top: 2px;
+    letter-spacing: 0;
   }
 
   .plan-info h3 {
@@ -476,78 +445,9 @@
     margin-bottom: 2px;
   }
 
-  .plan-info p {
-    font-size: 11px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.4;
-  }
+  .plan-info p { font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+  .plan-arrow { margin-left: auto; color: var(--sun); font-size: 18px; }
 
-  .plan-arrow {
-    margin-left: auto;
-    color: var(--sun);
-    font-size: 18px;
-  }
-
-  /* IMAGE ZONE — LIFESTYLE */
-  .lifestyle-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 220px;
-    border-top: 2px solid var(--ink);
-    border-bottom: 2px solid var(--ink);
-  }
-
-  .lifestyle-img-wrap {
-    overflow: hidden;
-    position: relative;
-  }
-
-  .lifestyle-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: saturate(0.85);
-  }
-
-  .lifestyle-img-placeholder {
-    width: 100%;
-    height: 100%;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .lifestyle-img-wrap:first-child .lifestyle-img-placeholder { background: #2D5A8E; }
-  .lifestyle-img-wrap:last-child .lifestyle-img-placeholder { background: #5A8A3A; }
-
-  .lifestyle-text-side {
-    background: var(--sand);
-    padding: 20px 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-left: 2px solid var(--ink);
-  }
-
-  .lifestyle-text-side h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--forest);
-    letter-spacing: -0.5px;
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-
-  .lifestyle-text-side p {
-    font-size: 11px;
-    color: #5A7060;
-    line-height: 1.5;
-  }
-
-  /* TESTIMONIALS */
   .testimonials {
     padding: 36px 20px;
     background: var(--mist);
@@ -572,10 +472,8 @@
     align-items: flex-start;
   }
 
-  /* IMAGE ZONE — TESTIMONIAL PORTRAIT */
   .test-portrait {
-    width: 52px;
-    height: 52px;
+    width: 52px; height: 52px;
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
@@ -583,28 +481,11 @@
   }
 
   .test-portrait img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
   }
 
-  .test-portrait-placeholder {
-    width: 100%;
-    height: 100%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .test-portrait:nth-child(1) .test-portrait-placeholder { background: var(--leaf); }
-
-  .test-body p {
-    font-size: 13px;
-    color: var(--ink);
-    line-height: 1.5;
-    margin-bottom: 6px;
-  }
+  .test-body p { font-size: 13px; color: var(--ink); line-height: 1.5; margin-bottom: 6px; }
 
   .test-name {
     font-family: 'DM Mono', monospace;
@@ -614,7 +495,6 @@
     letter-spacing: 1px;
   }
 
-  /* CTA */
   .cta-block {
     padding: 40px 20px;
     background: var(--sun);
@@ -633,12 +513,7 @@
     margin-bottom: 10px;
   }
 
-  .cta-sub {
-    font-size: 13px;
-    color: rgba(15,31,23,0.65);
-    margin-bottom: 24px;
-    line-height: 1.5;
-  }
+  .cta-sub { font-size: 13px; color: rgba(15,31,23,0.65); margin-bottom: 24px; line-height: 1.5; }
 
   .btn-main {
     display: block;
@@ -648,16 +523,12 @@
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
     font-size: 16px;
-    letter-spacing: -0.3px;
     padding: 16px;
     border: none;
     cursor: pointer;
     text-decoration: none;
     margin-bottom: 10px;
-    transition: background 0.2s;
   }
-
-  .btn-main:active { background: var(--leaf); }
 
   .btn-ghost {
     display: block;
@@ -671,10 +542,8 @@
     border: 2px solid var(--ink);
     cursor: pointer;
     text-decoration: none;
-    letter-spacing: -0.2px;
   }
 
-  /* MODAL */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -693,6 +562,7 @@
     overflow-y: auto;
     padding: 28px 20px 40px;
     border-top: 4px solid var(--sun);
+    position: relative;
   }
 
   .modal-close-btn {
@@ -728,9 +598,7 @@
     border-bottom: 1px solid rgba(26,58,42,0.12);
   }
 
-  .field-group {
-    margin-bottom: 16px;
-  }
+  .field-group { margin-bottom: 16px; }
 
   .field-label {
     font-family: 'DM Mono', monospace;
@@ -746,30 +614,18 @@
     width: 100%;
     background: var(--mist);
     border: 1px solid rgba(26,58,42,0.2);
-    border-radius: 0;
     padding: 12px 14px;
     font-family: 'DM Sans', sans-serif;
     font-size: 15px;
     color: var(--ink);
     outline: none;
     -webkit-appearance: none;
-    transition: border-color 0.2s;
   }
 
   .field-input:focus { border-color: var(--sun); }
 
-  .success-state {
-    display: none;
-    text-align: center;
-    padding: 30px 0;
-  }
-
-  .success-icon {
-    font-size: 40px;
-    margin-bottom: 12px;
-    display: block;
-  }
-
+  .success-state { display: none; text-align: center; padding: 30px 0; }
+  .success-icon { font-size: 40px; margin-bottom: 12px; display: block; }
   .success-state h3 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
@@ -778,24 +634,15 @@
     letter-spacing: -0.8px;
     margin-bottom: 8px;
   }
+  .success-state p { font-size: 13px; color: #5A7060; }
 
-  .success-state p {
-    font-size: 13px;
-    color: #5A7060;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--ink);
-    padding: 28px 20px;
-  }
+  footer { background: var(--ink); padding: 28px 20px; }
 
   .footer-mark {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
     font-size: 22px;
     color: var(--white);
-    letter-spacing: -0.5px;
     margin-bottom: 6px;
   }
 
@@ -810,323 +657,402 @@
     margin-bottom: 16px;
   }
 
-  .footer-legal {
-    font-size: 9px;
-    color: rgba(255,255,255,0.2);
-    line-height: 1.7;
-  }
-
+  .footer-legal { font-size: 9px; color: rgba(255,255,255,0.2); line-height: 1.7; }
   .footer-legal a { color: rgba(244,162,40,0.5); text-decoration: none; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-mark">My<span>Line</span></div>
-  <button class="nav-cta" onclick="openModal()">Get Your Number</button>
+  <button class="nav-cta" id="nav-cta" onclick="openModal()">—</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-top">
-    <div class="hero-eyebrow">Your permanent phone number</div>
-    <h1 class="hero-h1">One number.<br><em>Any internet.</em><br>Forever.</h1>
-    <p class="hero-body">No SIM. No carrier. No monthly bill. Pay once — yours for life. Works on every device with internet.</p>
-    <a href="#" class="btn-main" style="max-width:280px;display:inline-block;text-align:center" onclick="openModal(event)">Reserve your number →</a>
+    <div class="hero-eyebrow" id="hero-eyebrow">—</div>
+    <h1 class="hero-h1" id="hero-h1">—</h1>
+    <p class="hero-body" id="hero-body">—</p>
+    <a href="#" class="btn-main" style="max-width:280px;display:inline-block;text-align:center" id="hero-btn1" onclick="openModal(event)">—</a>
   </div>
-
-  <!-- IMAGE ZONE A: Hero lifestyle — hands on phone, clean interior, Solarpunk warmth. Replace with own photo. 800×520px recommended -->
   <div class="hero-img-zone">
-    <img class="hero-img"
-      src="https://source.unsplash.com/featured/800x520/?phone,technology,minimal"
-      alt="Person using MyLine on their phone"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="hero-img-fallback">
-      <div class="zone-tag"><strong>IMAGE ZONE A</strong>Lifestyle · Device in hand · Solarpunk warmth<br>Replace with own photo · 800×520px</div>
-    </div>
+    <img src="https://source.unsplash.com/featured/800x520/?phone,technology,minimal" alt="MyLine">
   </div>
 </section>
 
-<!-- STAT BAR -->
-<div class="stat-bar">
-  <div class="stat-item">
-    <div class="stat-num">$14</div>
-    <div class="stat-label">USD / month<br>infra cost</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">5B</div>
-    <div class="stat-label">People with<br>internet</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">∞</div>
-    <div class="stat-label">Years your<br>number lasts</div>
-  </div>
+<!-- LOCAL STAT BAR -->
+<div class="stat-bar" id="stat-bar">
+  <div class="stat-item"><div class="stat-num" id="sb1">—</div><div class="stat-label" id="sb1l">—</div></div>
+  <div class="stat-item"><div class="stat-num" id="sb2">—</div><div class="stat-label" id="sb2l">—</div></div>
+  <div class="stat-item"><div class="stat-num" id="sb3">—</div><div class="stat-label" id="sb3l">—</div></div>
 </div>
 
-<!-- HOW IT WORKS -->
 <section class="how">
-  <div class="section-eyebrow">How it works</div>
-  <h2 class="how-h2">MyLine decides.<br>You confirm.</h2>
-
-  <div class="step">
-    <div class="step-num">01</div>
-    <div class="step-content">
-      <h3>Download & open</h3>
-      <p>MyLine detects your setup automatically — software-only or hardware bridge. No technical knowledge needed.</p>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-num">02</div>
-    <div class="step-content">
-      <h3>Confirm your number</h3>
-      <p>We show you the best option. You tap yes. That's it. Your number is live in under 2 minutes.</p>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-num">03</div>
-    <div class="step-content">
-      <h3>Reconnect everything</h3>
-      <p>WhatsApp, banking apps, Uber, Signal — MyLine reconnects them automatically. One number. All apps.</p>
-    </div>
-  </div>
+  <div class="section-eyebrow" id="how-eyebrow">—</div>
+  <h2 class="how-h2" id="how-h2">—</h2>
+  <div class="step"><div class="step-num">01</div><div class="step-content"><h3 id="s1t">—</h3><p id="s1b">—</p></div></div>
+  <div class="step"><div class="step-num">02</div><div class="step-content"><h3 id="s2t">—</h3><p id="s2b">—</p></div></div>
+  <div class="step"><div class="step-num">03</div><div class="step-content"><h3 id="s3t">—</h3><p id="s3b">—</p></div></div>
 </section>
 
-<!-- PHOTO STRIP -->
-<!-- IMAGE ZONES B, C, D: Three lifestyle photos — device use, family, architecture/environment. Each ~270×180px -->
 <div class="photo-strip">
-  <div class="strip-photo">
-    <img src="https://source.unsplash.com/featured/270x180/?video,call,laptop"
-      alt="Person on video call"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="strip-photo-placeholder"><div class="zone-tag"><strong>ZONE B</strong>Device use<br>270×180px</div></div>
-  </div>
+  <div class="strip-photo"><img src="https://source.unsplash.com/featured/270x180/?video,call,laptop" alt=""></div>
   <div class="strip-divider"></div>
-  <div class="strip-photo">
-    <img src="https://source.unsplash.com/featured/270x180/?family,together,happy"
-      alt="Family connected"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="strip-photo-placeholder"><div class="zone-tag"><strong>ZONE C</strong>Family<br>270×180px</div></div>
-  </div>
+  <div class="strip-photo"><img src="https://source.unsplash.com/featured/270x180/?family,together,happy" alt=""></div>
   <div class="strip-divider"></div>
-  <div class="strip-photo">
-    <img src="https://source.unsplash.com/featured/270x180/?green,architecture,sustainable"
-      alt="Modern sustainable space"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="strip-photo-placeholder"><div class="zone-tag"><strong>ZONE D</strong>Environment<br>270×180px</div></div>
-  </div>
+  <div class="strip-photo"><img src="https://source.unsplash.com/featured/270x180/?green,architecture,sustainable" alt=""></div>
 </div>
 
-<!-- FEATURES -->
 <section class="features">
-  <h2 class="features-h2">Everything included.<br>Nothing extra.</h2>
-  <div class="feature-grid">
-    <div class="feature-cell">
-      <span class="feature-icon">🌐</span>
-      <div class="feature-title">Any internet</div>
-      <p class="feature-desc">WiFi, mobile data, public hotspot. If there's internet, your number works.</p>
-    </div>
-    <div class="feature-cell">
-      <span class="feature-icon">♾️</span>
-      <div class="feature-title">No expiry</div>
-      <p class="feature-desc">Pay once. Keep forever. No renewals, no monthly surprises.</p>
-    </div>
-    <div class="feature-cell">
-      <span class="feature-icon">👨‍👩‍👧</span>
-      <div class="feature-title">Family lines</div>
-      <p class="feature-desc">One collective number. Individual sub-lines for each member.</p>
-    </div>
-    <div class="feature-cell">
-      <span class="feature-icon">🔄</span>
-      <div class="feature-title">Auto-reconnect</div>
-      <p class="feature-desc">All your apps reconnect automatically. WhatsApp, banks, delivery.</p>
-    </div>
-    <div class="feature-cell">
-      <span class="feature-icon">📱</span>
-      <div class="feature-title">Any device</div>
-      <p class="feature-desc">Phone, tablet, smart TV, connected car. Same number, everywhere.</p>
-    </div>
-    <div class="feature-cell">
-      <span class="feature-icon">🔒</span>
-      <div class="feature-title">No carrier</div>
-      <p class="feature-desc">You own the number. No carrier can cut you off. Ever.</p>
-    </div>
+  <h2 class="features-h2" id="feat-h2">—</h2>
+  <div class="feature-grid" id="feat-grid"></div>
+</section>
+
+<!-- LOCAL STATS -->
+<section class="local-stats">
+  <span class="stats-eyebrow" id="stats-eyebrow">—</span>
+  <h2 class="stats-h2" id="stats-h2">—</h2>
+  <div class="stats-grid" id="stats-grid"></div>
+  <div class="ops-block">
+    <span class="ops-eyebrow" id="ops-eyebrow">—</span>
+    <div class="ops-text" id="ops-text">—</div>
   </div>
 </section>
 
-<!-- PLANS -->
 <section class="pricing">
-  <div class="pricing-eyebrow">Pricing</div>
-  <h2 class="pricing-h2">One payment.<br>Choose your plan.</h2>
-
-  <div class="plan-card featured" onclick="openModal()">
-    <div class="plan-price">$199<small> MXN</small></div>
-    <div class="plan-info">
-      <h3>MyLine Digital</h3>
-      <p>App + new number · 1 device · Forever</p>
-    </div>
-    <div class="plan-arrow">→</div>
-  </div>
-  <div class="plan-card" onclick="openModal()">
-    <div class="plan-price">$299<small> MXN</small></div>
-    <div class="plan-info">
-      <h3>MyLine Home</h3>
-      <p>App + existing landline · software only</p>
-    </div>
-    <div class="plan-arrow">→</div>
-  </div>
-  <div class="plan-card" onclick="openModal()">
-    <div class="plan-price">$799<small> MXN</small></div>
-    <div class="plan-info">
-      <h3>MyLine Family</h3>
-      <p>Collective line + 2 sub-lines · 3 devices</p>
-    </div>
-    <div class="plan-arrow">→</div>
-  </div>
-  <div class="plan-card" onclick="openModal()">
-    <div class="plan-price">$999<small> MXN</small></div>
-    <div class="plan-info">
-      <h3>MyLine Family Plus</h3>
-      <p>Collective line + 4 sub-lines · 5 devices</p>
-    </div>
-    <div class="plan-arrow">→</div>
-  </div>
+  <span class="pricing-eyebrow" id="pricing-eyebrow">—</span>
+  <h2 class="pricing-h2" id="pricing-h2">—</h2>
+  <div id="plans-container"></div>
 </section>
 
-<!-- LIFESTYLE BLOCK -->
-<div class="lifestyle-block">
-  <!-- IMAGE ZONE E: Working from home / connected lifestyle. 400×440px -->
-  <div class="lifestyle-img-wrap">
-    <img src="https://source.unsplash.com/featured/400x440/?home,working,connected"
-      alt="Connected at home"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="lifestyle-img-placeholder"><div class="zone-tag"><strong>ZONE E</strong>Home · Connected<br>400×440px</div></div>
-  </div>
-  <div class="lifestyle-text-side">
-    <h3>Free. And mine.</h3>
-    <p>No contract holds you. No carrier owns your number. It's yours — as permanent as your name.</p>
-  </div>
+<div class="photo-strip" style="height:200px;border:none;border-top:2px solid var(--ink)">
+  <div class="strip-photo" style="flex:1"><img src="https://source.unsplash.com/featured/400x200/?home,working,connected" alt=""></div>
+  <div class="strip-divider"></div>
+  <div class="strip-photo" style="flex:1"><img src="https://source.unsplash.com/featured/400x200/?nature,technology,future" alt=""></div>
 </div>
 
-<!-- TESTIMONIALS -->
 <section class="testimonials">
-  <h2 class="testimonials-h2">People who switched</h2>
-
+  <h2 class="testimonials-h2" id="test-h2">—</h2>
   <div class="testimonial-card">
-    <div class="test-portrait">
-      <!-- IMAGE ZONE F: Portrait — professional, diverse. 104×104px circle -->
-      <img src="https://source.unsplash.com/featured/104x104/?woman,portrait,professional"
-        alt="Sarah"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="test-portrait-placeholder" style="background:var(--leaf)"><div class="zone-tag" style="font-size:7px">F<br>104px</div></div>
-    </div>
-    <div class="test-body">
-      <p>"I travel for work. MyLine meant I kept my number through three countries, two SIM changes, and one lost phone."</p>
-      <div class="test-name">Sarah M. · Digital nomad · Canada</div>
-    </div>
+    <div class="test-portrait"><img src="https://source.unsplash.com/featured/104x104/?woman,portrait,professional" alt=""></div>
+    <div class="test-body"><p id="t1q">—</p><div class="test-name" id="t1n">—</div></div>
   </div>
-
   <div class="testimonial-card">
-    <div class="test-portrait">
-      <!-- IMAGE ZONE G: Portrait — older professional, warm. 104×104px circle -->
-      <img src="https://source.unsplash.com/featured/104x104/?man,portrait,smile"
-        alt="Roberto"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="test-portrait-placeholder" style="background:var(--sky)"><div class="zone-tag" style="font-size:7px">G<br>104px</div></div>
-    </div>
-    <div class="test-body">
-      <p>"My whole family in Mexico shares one number. Everyone rings. We never miss a call from mom."</p>
-      <div class="test-name">Roberto V. · Family plan · Mexico City</div>
-    </div>
+    <div class="test-portrait"><img src="https://source.unsplash.com/featured/104x104/?man,portrait,smile" alt=""></div>
+    <div class="test-body"><p id="t2q">—</p><div class="test-name" id="t2n">—</div></div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-block">
-  <h2 class="cta-h2">Your number.<br>Starting today.</h2>
-  <p class="cta-sub">One payment. No expiry. Every internet. Every device.</p>
-  <a href="#" class="btn-main" onclick="openModal(event)">Reserve your number</a>
-  <a href="tel:+16203830333" class="btn-ghost">Call us: +1 620 383 0333</a>
+  <h2 class="cta-h2" id="cta-h2">—</h2>
+  <p class="cta-sub" id="cta-sub">—</p>
+  <a href="#" class="btn-main" id="cta-btn1" onclick="openModal(event)">—</a>
+  <a href="tel:+16203830333" class="btn-ghost" id="cta-btn2">—</a>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-mark">My<span>Line</span></div>
-  <div class="footer-tagline">Free. And mine.</div>
-  <div class="footer-legal">
-    © 2026 · All rights reserved<br>
-    <a href="#">Privacy Policy</a> · <a href="#">Terms of Use</a><br>
-    WhatsApp® is a registered trademark of Meta Platforms, Inc. MyLine has no affiliation with WhatsApp or Meta Platforms.
-  </div>
+  <div class="footer-tagline" id="footer-tagline">—</div>
+  <div class="footer-legal" id="footer-legal">—</div>
 </footer>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modal" onclick="closeIfOverlay(event)">
   <div class="modal-sheet">
     <button class="modal-close-btn" onclick="closeModal()">✕ close</button>
-    <div class="modal-title">Reserve your number</div>
-    <div class="modal-sub-text">One payment · Free forever after</div>
-
-    <form id="reserveForm" action="https://formspree.io/f/XXXXXXXX" method="POST" onsubmit="submitForm(event)">
-      <div class="field-group">
-        <label class="field-label">Your name</label>
-        <input class="field-input" type="text" name="name" placeholder="How should we call you?" required>
-      </div>
-      <div class="field-group">
-        <label class="field-label">Email or WhatsApp</label>
-        <input class="field-input" type="text" name="contact" placeholder="We'll notify you when ready" required>
-      </div>
-      <div class="field-group">
-        <label class="field-label">Choose your plan</label>
-        <select class="field-input" name="plan">
-          <option value="digital">MyLine Digital — $199 MXN</option>
-          <option value="home">MyLine Home — $299 MXN</option>
-          <option value="family">MyLine Family — $799 MXN</option>
-          <option value="familyplus">MyLine Family Plus — $999 MXN</option>
-        </select>
-      </div>
-      <button type="submit" class="btn-main" style="border:none;margin-top:8px">Reserve now →</button>
+    <div class="modal-title" id="modal-title">—</div>
+    <div class="modal-sub-text" id="modal-sub">—</div>
+    <form id="mlForm" action="https://formspree.io/f/XXXXXXXX" method="POST" onsubmit="submitForm(event)">
+      <div class="field-group"><label class="field-label" id="lbl-name">—</label><input class="field-input" type="text" name="name" required></div>
+      <div class="field-group"><label class="field-label" id="lbl-contact">—</label><input class="field-input" type="text" name="contact" required></div>
+      <div class="field-group"><label class="field-label" id="lbl-plan">—</label><select class="field-input" name="plan" id="plan-select"></select></div>
+      <button type="submit" class="btn-main" id="modal-btn" style="border:none;margin-top:8px">—</button>
     </form>
-
     <div class="success-state" id="successState">
       <span class="success-icon">✓</span>
-      <h3>You're on the list.</h3>
-      <p>We'll reach out as soon as your number is ready.</p>
+      <h3 id="success-title">—</h3>
+      <p id="success-body">—</p>
     </div>
   </div>
 </div>
 
 <script>
-  function openModal(e) {
-    if (e) e.preventDefault();
-    document.getElementById('modal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+const LOCALE_DATA = {
+  MX: { lang:'es', currency:'MXN', symbol:'$', internet_users:'96M', internet_pct:'75%', mobile_users:'88M', savings:'$500+', operators:'Telcel · AT&T · Movistar · Bait', prices:{digital:249,home:349,family:999,familyplus:1199}, flag:'🇲🇽' },
+  CO: { lang:'es', currency:'COP', symbol:'$', internet_users:'38M', internet_pct:'73%', mobile_users:'35M', savings:'$60,000+', operators:'Claro · Movistar · Tigo · WOM', prices:{digital:23900,home:33900,family:94900,familyplus:119900}, flag:'🇨🇴' },
+  AR: { lang:'es', currency:'ARS', symbol:'$', internet_users:'38M', internet_pct:'83%', mobile_users:'36M', savings:'$4,000+', operators:'Personal · Claro · Movistar', prices:{digital:3599,home:5199,family:14399,familyplus:17999}, flag:'🇦🇷' },
+  CL: { lang:'es', currency:'CLP', symbol:'$', internet_users:'16M', internet_pct:'82%', mobile_users:'15M', savings:'$8,000+', operators:'Entel · Movistar · Claro · WOM', prices:{digital:5990,home:8990,family:23990,familyplus:29990}, flag:'🇨🇱' },
+  PE: { lang:'es', currency:'PEN', symbol:'S/', internet_users:'24M', internet_pct:'71%', mobile_users:'22M', savings:'S/40+', operators:'Movistar · Claro · Entel · Bitel', prices:{digital:34,home:49,family:129,familyplus:164}, flag:'🇵🇪' },
+  BR: { lang:'pt', currency:'BRL', symbol:'R$', internet_users:'165M', internet_pct:'77%', mobile_users:'158M', savings:'R$90+', operators:'Vivo · Claro · TIM · Oi', prices:{digital:59,home:89,family:219,familyplus:279}, flag:'🇧🇷' },
+  PT: { lang:'pt', currency:'EUR', symbol:'€', internet_users:'8M', internet_pct:'80%', mobile_users:'7.5M', savings:'€20+', operators:'NOS · MEO · Vodafone · NOWO', prices:{digital:9.99,home:14.99,family:34.99,familyplus:44.99}, flag:'🇵🇹' },
+  ES: { lang:'es', currency:'EUR', symbol:'€', internet_users:'43M', internet_pct:'93%', mobile_users:'41M', savings:'€20+', operators:'Movistar · Vodafone · Orange · MásMóvil', prices:{digital:9.99,home:14.99,family:34.99,familyplus:44.99}, flag:'🇪🇸' },
+  US: { lang:'en', currency:'USD', symbol:'$', internet_users:'310M', internet_pct:'92%', mobile_users:'295M', savings:'$20+', operators:'AT&T · Verizon · T-Mobile · Mint', prices:{digital:9.99,home:14.99,family:34.99,familyplus:44.99}, flag:'🇺🇸' },
+  CA: { lang:'en', currency:'CAD', symbol:'CA$', internet_users:'35M', internet_pct:'93%', mobile_users:'33M', savings:'CA$25+', operators:'Bell · Rogers · Telus · Freedom', prices:{digital:12.99,home:18.99,family:44.99,familyplus:54.99}, flag:'🇨🇦' },
+  GB: { lang:'en', currency:'GBP', symbol:'£', internet_users:'57M', internet_pct:'96%', mobile_users:'55M', savings:'£15+', operators:'EE · O2 · Vodafone · Three', prices:{digital:8.99,home:12.99,family:29.99,familyplus:39.99}, flag:'🇬🇧' },
+  AU: { lang:'en', currency:'AUD', symbol:'A$', internet_users:'22M', internet_pct:'88%', mobile_users:'21M', savings:'A$20+', operators:'Telstra · Optus · Vodafone · Boost', prices:{digital:14.99,home:21.99,family:54.99,familyplus:69.99}, flag:'🇦🇺' },
+  DEFAULT: { lang:'en', currency:'USD', symbol:'$', internet_users:'5B', internet_pct:'67%', mobile_users:'4.3B', savings:'$20+', operators:'Any carrier · Any country', prices:{digital:9.99,home:14.99,family:34.99,familyplus:44.99}, flag:'🌍' }
+};
+
+const T = {
+  es: {
+    nav_cta:'Reservar número',
+    hero_eyebrow:'Tu número permanente de teléfono',
+    hero_h1:'Un número.\n<em>Cualquier internet.</em>\nPara siempre.',
+    hero_body:'Sin SIM. Sin operadora. Sin mensualidad. Paga una vez — tuyo para siempre. Funciona en cualquier dispositivo con internet.',
+    hero_btn1:'Reserva tu número →',
+    how_eyebrow:'Cómo funciona',
+    how_h2:'MyLine decide.\nTú confirmas.',
+    s1t:'Descarga y abre', s1b:'MyLine detecta tu configuración automáticamente — software o hardware. Sin conocimiento técnico.',
+    s2t:'Confirma tu número', s2b:'Te mostramos la mejor opción. Tú tocas sí. Listo. Tu número en menos de 2 minutos.',
+    s3t:'Reconecta todo', s3b:'WhatsApp, bancos, Uber, Signal — MyLine los reconecta automáticamente. Un número. Todas las apps.',
+    feat_h2:'Todo incluido.\nNada extra.',
+    feats:[['🌐','Cualquier internet','WiFi, datos, punto de acceso. Si hay internet, tu número funciona.'],['♾️','Sin vencimiento','Paga una vez. Guarda para siempre. Sin renovaciones.'],['👨‍👩‍👧','Líneas familiares','Una línea colectiva. Sub-líneas individuales por miembro.'],['🔄','Auto-reconexión','Todas tus apps se reconectan automáticamente.'],['📱','Cualquier dispositivo','Teléfono, tablet, smart TV, auto conectado. El mismo número.'],['🔒','Sin operadora','Tú eres dueño del número. Ninguna operadora puede cortarte.']],
+    stats_eyebrow:'Tu país. Tus datos.',
+    stats_h2:'Por qué MyLine tiene sentido aquí',
+    stat_labels:['Personas con internet','Penetración móvil','Usuarios móviles','Lo que ahorras al año'],
+    ops_eyebrow:'Ya no las necesitas',
+    pricing_eyebrow:'Precios',
+    pricing_h2:'Un pago.\nElige tu plan.',
+    plan_names:{digital:'MyLine Digital',home:'MyLine en Casa',family:'MyLine Familiar',familyplus:'MyLine Familia Plus'},
+    plan_descs:{digital:'App + número nuevo · 1 dispositivo · Para siempre',home:'App + línea existente · solo software',family:'Línea colectiva + 2 sub-líneas · 3 dispositivos',familyplus:'Línea colectiva + 4 sub-líneas · 5 dispositivos'},
+    test_h2:'Personas que cambiaron',
+    t1q:'"Viajo por trabajo. MyLine significó que conservé mi número en tres países, dos SIMs y un teléfono perdido."',
+    t1n:'Sarah M. · Nómada digital',
+    t2q:'"Toda mi familia en México comparte un número. Todos timbran. Nunca perdemos una llamada."',
+    t2n:'Roberto V. · Plan Familiar',
+    cta_h2:'Tu número.\nDesde hoy.',
+    cta_sub:'Un pago. Sin vencimiento. Cualquier internet. Cualquier dispositivo.',
+    cta_btn1:'Reserva tu número',
+    cta_btn2:'Llámanos: +1 620 383 0333',
+    footer_tagline:'Free. And mine.',
+    modal_title:'Reserva tu número',
+    modal_sub:'Un pago · Gratis para siempre después',
+    lbl_name:'Tu nombre',
+    lbl_contact:'Email o WhatsApp',
+    lbl_plan:'Elige tu plan',
+    modal_btn:'Reservar ahora →',
+    success_title:'Estás en la lista.',
+    success_body:'Te avisamos cuando tu número esté listo.',
+    footer_legal:'© 2026 · Todos los derechos reservados · <a href="#">Privacidad</a> · <a href="#">Términos</a><br>WhatsApp® Meta Platforms, Inc. Uber® Uber Technologies, Inc. Las operadoras mencionadas son marcas registradas de sus dueños. MyLine no tiene afiliación con ninguna de estas empresas.'
+  },
+  pt: {
+    nav_cta:'Reservar número',
+    hero_eyebrow:'Seu número permanente de telefone',
+    hero_h1:'Um número.\n<em>Qualquer internet.</em>\nPara sempre.',
+    hero_body:'Sem SIM. Sem operadora. Sem mensalidade. Pague uma vez — seu para sempre. Funciona em qualquer dispositivo com internet.',
+    hero_btn1:'Reserve seu número →',
+    how_eyebrow:'Como funciona',
+    how_h2:'MyLine decide.\nVocê confirma.',
+    s1t:'Baixe e abra', s1b:'MyLine detecta sua configuração automaticamente — software ou hardware. Sem conhecimento técnico.',
+    s2t:'Confirme seu número', s2b:'Mostramos a melhor opção. Você toca em sim. Pronto. Seu número em menos de 2 minutos.',
+    s3t:'Reconecte tudo', s3b:'WhatsApp, bancos, Uber, Signal — MyLine reconecta automaticamente. Um número. Todos os apps.',
+    feat_h2:'Tudo incluído.\nNada extra.',
+    feats:[['🌐','Qualquer internet','Wi-Fi, dados, hotspot. Se há internet, seu número funciona.'],['♾️','Sem vencimento','Pague uma vez. Guarde para sempre. Sem renovações.'],['👨‍👩‍👧','Linhas familiares','Uma linha coletiva. Sub-linhas individuais por membro.'],['🔄','Auto-reconexão','Todos os seus apps se reconectam automaticamente.'],['📱','Qualquer dispositivo','Celular, tablet, smart TV, carro conectado. O mesmo número.'],['🔒','Sem operadora','Você é dono do número. Nenhuma operadora pode te cortar.']],
+    stats_eyebrow:'Seu país. Seus dados.',
+    stats_h2:'Por que MyLine faz sentido aqui',
+    stat_labels:['Pessoas com internet','Penetração móvel','Usuários móveis','O que você economiza por ano'],
+    ops_eyebrow:'Você não precisa mais delas',
+    pricing_eyebrow:'Preços',
+    pricing_h2:'Um pagamento.\nEscolha seu plano.',
+    plan_names:{digital:'MyLine Digital',home:'MyLine em Casa',family:'MyLine Familiar',familyplus:'MyLine Família Plus'},
+    plan_descs:{digital:'App + novo número · 1 dispositivo · Para sempre',home:'App + linha existente · apenas software',family:'Linha coletiva + 2 sub-linhas · 3 dispositivos',familyplus:'Linha coletiva + 4 sub-linhas · 5 dispositivos'},
+    test_h2:'Pessoas que mudaram',
+    t1q:'"Viajo a trabalho. Com MyLine mantive meu número em três países, duas trocas de SIM e um celular perdido."',
+    t1n:'Sarah M. · Nômade digital',
+    t2q:'"Toda a minha família no Brasil compartilha um número. Todos tocam. Nunca perdemos uma chamada."',
+    t2n:'Roberto V. · Plano Familiar',
+    cta_h2:'Seu número.\nA partir de hoje.',
+    cta_sub:'Um pagamento. Sem vencimento. Qualquer internet. Qualquer dispositivo.',
+    cta_btn1:'Reserve seu número',
+    cta_btn2:'Ligue: +1 620 383 0333',
+    footer_tagline:'Free. And mine.',
+    modal_title:'Reserve seu número',
+    modal_sub:'Um pagamento · Grátis para sempre depois',
+    lbl_name:'Seu nome',
+    lbl_contact:'E-mail ou WhatsApp',
+    lbl_plan:'Escolha seu plano',
+    modal_btn:'Reservar agora →',
+    success_title:'Você está na lista.',
+    success_body:'Avisaremos quando seu número estiver pronto.',
+    footer_legal:'© 2026 · Todos os direitos reservados · <a href="#">Privacidade</a> · <a href="#">Termos</a><br>WhatsApp® Meta Platforms, Inc. Uber® Uber Technologies, Inc. As operadoras mencionadas são marcas registradas de seus proprietários. MyLine não tem afiliação com nenhuma dessas empresas.'
+  },
+  en: {
+    nav_cta:'Get your number',
+    hero_eyebrow:'Your permanent phone number',
+    hero_h1:'One number.\n<em>Any internet.</em>\nForever.',
+    hero_body:'No SIM. No carrier. No monthly fee. Pay once — yours for life. Works on every device with internet.',
+    hero_btn1:'Reserve your number →',
+    how_eyebrow:'How it works',
+    how_h2:'MyLine decides.\nYou confirm.',
+    s1t:'Download & open', s1b:'MyLine detects your setup automatically — software or hardware. No technical knowledge needed.',
+    s2t:'Confirm your number', s2b:'We show you the best option. You tap yes. Done. Your number live in under 2 minutes.',
+    s3t:'Reconnect everything', s3b:'WhatsApp, banking, Uber, Signal — MyLine reconnects them automatically. One number. All apps.',
+    feat_h2:'Everything included.\nNothing extra.',
+    feats:[['🌐','Any internet','WiFi, mobile data, hotspot. If there\'s internet, your number works.'],['♾️','No expiry','Pay once. Keep forever. No renewals, no surprises.'],['👨‍👩‍👧','Family lines','One collective number. Individual sub-lines for each member.'],['🔄','Auto-reconnect','All your apps reconnect automatically.'],['📱','Any device','Phone, tablet, smart TV, connected car. Same number.'],['🔒','No carrier','You own the number. No carrier can cut you off. Ever.']],
+    stats_eyebrow:'Your country. Your data.',
+    stats_h2:'Why MyLine makes sense here',
+    stat_labels:['People with internet','Mobile penetration','Mobile users','What you save per year'],
+    ops_eyebrow:'You no longer need them',
+    pricing_eyebrow:'Pricing',
+    pricing_h2:'One payment.\nChoose your plan.',
+    plan_names:{digital:'MyLine Digital',home:'MyLine Home',family:'MyLine Family',familyplus:'MyLine Family Plus'},
+    plan_descs:{digital:'App + new number · 1 device · Forever',home:'App + existing line · software only',family:'Collective line + 2 sub-lines · 3 devices',familyplus:'Collective line + 4 sub-lines · 5 devices'},
+    test_h2:'People who switched',
+    t1q:'"I travel for work. MyLine meant I kept my number through three countries, two SIM changes, and one lost phone."',
+    t1n:'Sarah M. · Digital nomad · Canada',
+    t2q:'"My whole family shares one number. Everyone rings. We never miss a call."',
+    t2n:'Roberto V. · Family plan',
+    cta_h2:'Your number.\nStarting today.',
+    cta_sub:'One payment. No expiry. Any internet. Any device.',
+    cta_btn1:'Reserve your number',
+    cta_btn2:'Call us: +1 620 383 0333',
+    footer_tagline:'Free. And mine.',
+    modal_title:'Reserve your number',
+    modal_sub:'One payment · Free forever after',
+    lbl_name:'Your name',
+    lbl_contact:'Email or WhatsApp',
+    lbl_plan:'Choose your plan',
+    modal_btn:'Reserve now →',
+    success_title:'You\'re on the list.',
+    success_body:'We\'ll reach out as soon as your number is ready.',
+    footer_legal:'© 2026 · All rights reserved · <a href="#">Privacy Policy</a> · <a href="#">Terms of Use</a><br>WhatsApp® is a registered trademark of Meta Platforms, Inc. Uber® is a registered trademark of Uber Technologies, Inc. All mentioned carriers are trademarks of their respective owners. MyLine has no affiliation with any of these companies.'
   }
-  function closeModal() {
-    document.getElementById('modal').classList.remove('active');
-    document.body.style.overflow = '';
+};
+
+function fmtPrice(symbol, amount, currency) {
+  if (['MXN','COP','ARS','CLP'].includes(currency)) return symbol + amount.toLocaleString();
+  return symbol + amount.toFixed(2);
+}
+
+async function detectCountry() {
+  try {
+    const r = await fetch('https://ipapi.co/json/');
+    const d = await r.json();
+    return d.country_code || 'DEFAULT';
+  } catch(e) {
+    const lang = navigator.language || 'en';
+    if (lang.startsWith('pt')) return 'BR';
+    if (lang.startsWith('es')) return 'MX';
+    return 'DEFAULT';
   }
-  function closeIfOverlay(e) {
-    if (e.target === document.getElementById('modal')) closeModal();
-  }
-  function submitForm(e) {
-    e.preventDefault();
-    const form = document.getElementById('reserveForm');
-    const btn = form.querySelector('button[type=submit]');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(() => {
-      form.style.display = 'none';
-      document.getElementById('successState').style.display = 'block';
-    }).catch(() => {
-      btn.textContent = 'Reserve now →';
-      btn.disabled = false;
-    });
-  }
+}
+
+function renderPage(country) {
+  const loc = LOCALE_DATA[country] || LOCALE_DATA.DEFAULT;
+  const t = T[loc.lang] || T.en;
+
+  document.documentElement.lang = loc.lang;
+  document.getElementById('nav-cta').textContent = t.nav_cta;
+  document.getElementById('hero-eyebrow').textContent = t.hero_eyebrow;
+  document.getElementById('hero-h1').innerHTML = t.hero_h1.replace(/\n/g,'<br>');
+  document.getElementById('hero-body').textContent = t.hero_body;
+  document.getElementById('hero-btn1').textContent = t.hero_btn1;
+
+  document.getElementById('how-eyebrow').textContent = t.how_eyebrow;
+  document.getElementById('how-h2').innerHTML = t.how_h2.replace(/\n/g,'<br>');
+  document.getElementById('s1t').textContent = t.s1t;
+  document.getElementById('s1b').textContent = t.s1b;
+  document.getElementById('s2t').textContent = t.s2t;
+  document.getElementById('s2b').textContent = t.s2b;
+  document.getElementById('s3t').textContent = t.s3t;
+  document.getElementById('s3b').textContent = t.s3b;
+
+  document.getElementById('feat-h2').innerHTML = t.feat_h2.replace(/\n/g,'<br>');
+  document.getElementById('feat-grid').innerHTML = t.feats.map(f=>`
+    <div class="feature-cell">
+      <span class="feature-icon">${f[0]}</span>
+      <div class="feature-title">${f[1]}</div>
+      <p class="feature-desc">${f[2]}</p>
+    </div>`).join('');
+
+  // Stat bar
+  document.getElementById('sb1').textContent = loc.internet_users;
+  document.getElementById('sb1l').textContent = t.stat_labels[0];
+  document.getElementById('sb2').textContent = loc.internet_pct;
+  document.getElementById('sb2l').textContent = t.stat_labels[1];
+  document.getElementById('sb3').textContent = loc.savings;
+  document.getElementById('sb3l').textContent = t.stat_labels[3];
+
+  // Local stats section
+  document.getElementById('stats-eyebrow').textContent = loc.flag + ' ' + t.stats_eyebrow;
+  document.getElementById('stats-h2').textContent = t.stats_h2;
+  const statsData = [loc.internet_users, loc.internet_pct, loc.mobile_users, loc.savings];
+  document.getElementById('stats-grid').innerHTML = statsData.map((v,i)=>`
+    <div class="stat-cell">
+      <div class="stat-cell-num">${v}</div>
+      <div class="stat-cell-label">${t.stat_labels[i]}</div>
+    </div>`).join('');
+  document.getElementById('ops-eyebrow').textContent = t.ops_eyebrow;
+  document.getElementById('ops-text').textContent = loc.operators;
+
+  // Pricing
+  document.getElementById('pricing-eyebrow').textContent = t.pricing_eyebrow;
+  document.getElementById('pricing-h2').innerHTML = t.pricing_h2.replace(/\n/g,'<br>');
+  const planKeys = ['digital','home','family','familyplus'];
+  document.getElementById('plans-container').innerHTML = planKeys.map((k,i)=>`
+    <div class="plan-card ${i===0?'featured':''}" onclick="openModal()">
+      <div class="plan-price">${fmtPrice(loc.symbol,loc.prices[k],loc.currency)}<small>${loc.currency}</small></div>
+      <div class="plan-info"><h3>${t.plan_names[k]}</h3><p>${t.plan_descs[k]}</p></div>
+      <div class="plan-arrow">→</div>
+    </div>`).join('');
+
+  // Testimonials
+  document.getElementById('test-h2').textContent = t.test_h2;
+  document.getElementById('t1q').textContent = t.t1q;
+  document.getElementById('t1n').textContent = t.t1n;
+  document.getElementById('t2q').textContent = t.t2q;
+  document.getElementById('t2n').textContent = t.t2n;
+
+  // CTA
+  document.getElementById('cta-h2').innerHTML = t.cta_h2.replace(/\n/g,'<br>');
+  document.getElementById('cta-sub').textContent = t.cta_sub;
+  document.getElementById('cta-btn1').textContent = t.cta_btn1;
+  document.getElementById('cta-btn2').textContent = t.cta_btn2;
+
+  // Footer
+  document.getElementById('footer-tagline').textContent = t.footer_tagline;
+  document.getElementById('footer-legal').innerHTML = t.footer_legal;
+
+  // Modal
+  document.getElementById('modal-title').textContent = t.modal_title;
+  document.getElementById('modal-sub').textContent = t.modal_sub;
+  document.getElementById('lbl-name').textContent = t.lbl_name;
+  document.getElementById('lbl-contact').textContent = t.lbl_contact;
+  document.getElementById('lbl-plan').textContent = t.lbl_plan;
+  document.getElementById('modal-btn').textContent = t.modal_btn;
+  document.getElementById('success-title').textContent = t.success_title;
+  document.getElementById('success-body').textContent = t.success_body;
+  document.getElementById('plan-select').innerHTML = planKeys.map(k=>
+    `<option value="${k}">${t.plan_names[k]} — ${fmtPrice(loc.symbol,loc.prices[k],loc.currency)} ${loc.currency}</option>`).join('');
+}
+
+function openModal(e) {
+  if (e) e.preventDefault();
+  document.getElementById('modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeIfOverlay(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+function submitForm(e) {
+  e.preventDefault();
+  const form = document.getElementById('mlForm');
+  const btn = document.getElementById('modal-btn');
+  const orig = btn.textContent;
+  btn.disabled = true;
+  fetch(form.action, {
+    method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}
+  }).then(()=>{
+    form.style.display='none';
+    document.getElementById('successState').style.display='block';
+  }).catch(()=>{ btn.textContent=orig; btn.disabled=false; });
+}
+
+detectCountry().then(renderPage);
 </script>
 </body>
 </html>
