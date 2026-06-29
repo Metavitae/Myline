@@ -57,9 +57,11 @@
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
     font-size: 13px;
-    padding: 8px 16px;
+    padding: 10px 18px;
     border: none;
+    border-radius: 0;
     cursor: pointer;
+    letter-spacing: -0.2px;
   }
 
   .hero {
@@ -483,33 +485,55 @@
 
   .cta-sub { font-size: 15px; color: rgba(15,31,23,0.7); margin-bottom: 24px; line-height: 1.5; }
 
+  /* BAUHAUS BUTTONS — sharp, geometric, structural */
   .btn-main {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     background: var(--forest);
     color: var(--white);
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
     font-size: 16px;
-    padding: 16px;
+    padding: 18px 20px;
     border: none;
+    border-radius: 0;
     cursor: pointer;
     text-decoration: none;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
+    letter-spacing: -0.3px;
+    position: relative;
+  }
+
+  .btn-main::after {
+    content: '→';
+    font-size: 20px;
+    font-weight: 300;
   }
 
   .btn-ghost {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     background: transparent;
     color: var(--ink);
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'DM Mono', monospace;
     font-weight: 500;
-    font-size: 13px;
-    padding: 12px;
+    font-size: 12px;
+    padding: 14px 20px;
     border: 2px solid var(--ink);
+    border-radius: 0;
     cursor: pointer;
     text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .btn-ghost::after {
+    content: '↗';
+    font-size: 16px;
   }
 
   .modal-overlay {
@@ -644,7 +668,7 @@
     <a href="#" class="btn-main" style="max-width:280px;display:inline-block;text-align:center" id="hero-btn1" onclick="openModal(event)">—</a>
   </div>
   <div class="hero-img-zone">
-    <img src="https://picsum.photos/id/3/800/520" alt="MyLine">
+    <div style="width:100%;height:100%;background:linear-gradient(135deg,#2D6A4F 0%,#1A3A2A 100%);display:flex;align-items:center;justify-content:center"><span style='font-family:Space Grotesk,sans-serif;font-size:13px;color:rgba(255,255,255,0.3);letter-spacing:3px;text-transform:uppercase'>YOUR PHOTO HERE</span></div>
   </div>
 </section>
 
@@ -659,11 +683,11 @@
 </section>
 
 <div class="photo-strip">
-  <div class="strip-photo"><img src="https://picsum.photos/id/20/270/180" alt=""></div>
+  <div class="strip-photo" style="background:#2D6A4F"></div>
   <div class="strip-divider"></div>
-  <div class="strip-photo"><img src="https://picsum.photos/id/21/270/180" alt=""></div>
+  <div class="strip-photo" style="background:#1A3A2A"></div>
   <div class="strip-divider"></div>
-  <div class="strip-photo"><img src="https://picsum.photos/id/28/270/180" alt=""></div>
+  <div class="strip-photo" style="background:#74C2E1"></div>
 </div>
 
 <section class="features">
@@ -675,17 +699,38 @@
 <section class="receipt-section">
   <span class="receipt-eyebrow" id="receipt-eyebrow">—</span>
   <h2 class="receipt-h2" id="receipt-h2">—</h2>
-  <div class="receipt-input-row">
-    <span class="receipt-input-label" id="receipt-input-label">—</span>
-    <input class="receipt-input" type="number" id="years-input" min="1" max="30" value="3" oninput="updateReceipt()">
-    <span class="receipt-input-label" id="receipt-years-label">—</span>
+
+  <div class="receipt-inputs">
+    <div class="receipt-field">
+      <label class="receipt-label" id="lbl-years">—</label>
+      <div class="years-stepper">
+        <button onclick="changeYears(-1)">−</button>
+        <span id="years-display">3</span>
+        <button onclick="changeYears(1)">+</button>
+      </div>
+    </div>
+    <div class="receipt-field">
+      <label class="receipt-label" id="lbl-carrier">—</label>
+      <select class="receipt-select" id="carrier-select" onchange="updateReceipt()">
+        <option value="299">Telcel</option>
+        <option value="249">AT&T</option>
+        <option value="229">Movistar</option>
+        <option value="149">Bait</option>
+        <option value="199">Otro</option>
+      </select>
+    </div>
   </div>
+
   <div class="receipt">
     <div class="receipt-title" id="receipt-title">—</div>
-    <div class="receipt-row"><span id="r-monthly-label">—</span><span class="receipt-amount" id="r-monthly">—</span></div>
-    <div class="receipt-row"><span id="r-annual-label">—</span><span class="receipt-amount" id="r-annual">—</span></div>
-    <div class="receipt-row total"><span id="r-total-label">—</span><span class="receipt-amount" id="r-total">—</span></div>
-    <div class="receipt-row myline"><span>MyLine</span><span class="receipt-amount" id="r-myline">—</span></div>
+    <div class="receipt-row total">
+      <span id="r-total-label">—</span>
+      <span class="receipt-amount" id="r-total">—</span>
+    </div>
+    <div class="receipt-row myline">
+      <span>MyLine</span>
+      <span class="receipt-amount" id="r-myline">—</span>
+    </div>
     <div class="receipt-note" id="receipt-note">—</div>
   </div>
 </section>
@@ -697,19 +742,19 @@
 </section>
 
 <div class="photo-strip" style="height:200px;border:none;border-top:2px solid var(--ink)">
-  <div class="strip-photo" style="flex:1"><img src="https://picsum.photos/id/48/400/200" alt=""></div>
+  <div class="strip-photo" style="flex:1;background:#2D6A4F"></div>
   <div class="strip-divider"></div>
-  <div class="strip-photo" style="flex:1"><img src="https://picsum.photos/id/29/400/200" alt=""></div>
+  <div class="strip-photo" style="flex:1;background:#F4A228"></div>
 </div>
 
 <section class="testimonials">
   <h2 class="testimonials-h2" id="test-h2">—</h2>
   <div class="testimonial-card">
-    <div class="test-portrait"><img src="https://picsum.photos/id/1005/104/104" alt=""></div>
+    <div class="test-portrait" style="background:var(--leaf);display:flex;align-items:center;justify-content:center"><span style="font-family:Space Grotesk,sans-serif;font-weight:700;font-size:20px;color:white">S</span></div>
     <div class="test-body"><p id="t1q">—</p><div class="test-name" id="t1n">—</div></div>
   </div>
   <div class="testimonial-card">
-    <div class="test-portrait"><img src="https://picsum.photos/id/1012/104/104" alt=""></div>
+    <div class="test-portrait" style="background:var(--forest);display:flex;align-items:center;justify-content:center"><span style="font-family:Space Grotesk,sans-serif;font-weight:700;font-size:20px;color:white">R</span></div>
     <div class="test-body"><p id="t2q">—</p><div class="test-name" id="t2n">—</div></div>
   </div>
 </section>
@@ -937,6 +982,16 @@ function detectCountry() {
   }
 }
 
+function safeSet(id, value, prop='textContent') {
+  const el = document.getElementById(id);
+  if (el) el[prop] = value;
+}
+
+function safeSetHTML(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = value;
+}
+
 function renderPage(country) {
   const loc = LOCALE_DATA[country] || LOCALE_DATA.DEFAULT;
   const t = T[loc.lang] || T.en;
@@ -968,17 +1023,24 @@ function renderPage(country) {
   // Stat bar
 
 
-  // Local stats section
-  document.getElementById('stats-eyebrow').textContent = loc.flag + ' ' + t.stats_eyebrow;
-  document.getElementById('stats-h2').textContent = t.stats_h2;
-  const statsData = [loc.internet_users, loc.internet_pct, loc.mobile_users, loc.savings];
-  document.getElementById('stats-grid').innerHTML = statsData.map((v,i)=>`
-    <div class="stat-cell">
-      <div class="stat-cell-num">${v}</div>
-      <div class="stat-cell-label">${t.stat_labels[i]}</div>
-    </div>`).join('');
-  document.getElementById('ops-eyebrow').textContent = t.ops_eyebrow;
-  document.getElementById('ops-text').textContent = loc.operators;
+  // Local stats section (receipt section)
+  const seEl = document.getElementById('stats-eyebrow');
+  const shEl = document.getElementById('stats-h2');
+  const sgEl = document.getElementById('stats-grid');
+  const oeEl = document.getElementById('ops-eyebrow');
+  const otEl = document.getElementById('ops-text');
+  if (seEl) seEl.textContent = loc.flag + ' ' + t.stats_eyebrow;
+  if (shEl) shEl.textContent = t.stats_h2;
+  if (sgEl) {
+    const statsData = [loc.internet_users, loc.internet_pct, loc.mobile_users, loc.savings];
+    sgEl.innerHTML = statsData.map((v,i)=>`
+      <div class="stat-cell">
+        <div class="stat-cell-num">${v}</div>
+        <div class="stat-cell-label">${t.stat_labels[i]}</div>
+      </div>`).join('');
+  }
+  if (oeEl) oeEl.textContent = t.ops_eyebrow;
+  if (otEl) otEl.textContent = loc.operators;
 
   // Pricing
   document.getElementById('pricing-eyebrow').textContent = t.pricing_eyebrow;
@@ -1052,33 +1114,33 @@ function submitForm(e) {
 let currentLoc = null;
 let currentT = null;
 
+let receiptYears = 3;
+
+function changeYears(delta) {
+  receiptYears = Math.max(1, Math.min(30, receiptYears + delta));
+  const el = document.getElementById('years-display');
+  if (el) el.textContent = receiptYears;
+  updateReceipt();
+}
+
 function updateReceipt() {
-  if (!currentLoc || !currentT) return;
-  const years = parseInt(document.getElementById('years-input').value) || 3;
+  if (!currentLoc) return;
   const sym = currentLoc.symbol;
   const cur = currentLoc.currency;
-  
-  // Average carrier monthly costs by currency
-  const monthlyCarrier = {
-    MXN: 299, COP: 35000, ARS: 4500, CLP: 8990,
-    PEN: 49, BRL: 49, EUR: 19.99, GBP: 15.99,
-    USD: 24.99, CAD: 39.99, AUD: 34.99
-  };
-  
-  const monthly = monthlyCarrier[cur] || 24.99;
-  const annual = monthly * 12;
-  const total = annual * years;
+  const carrierEl = document.getElementById('carrier-select');
+  const monthly = carrierEl ? parseFloat(carrierEl.value) : 299;
+  const total = monthly * 12 * receiptYears;
   const mylinePrice = currentLoc.prices.digital;
-  
+
   const fmt = (n) => {
     if (['MXN','COP','ARS','CLP'].includes(cur)) return sym + Math.round(n).toLocaleString();
     return sym + n.toFixed(2);
   };
-  
-  document.getElementById('r-monthly').textContent = fmt(monthly) + ' / mo';
-  document.getElementById('r-annual').textContent = fmt(annual) + ' / yr';
-  document.getElementById('r-total').textContent = fmt(total);
-  document.getElementById('r-myline').textContent = fmt(mylinePrice) + ' once';
+
+  const totalEl = document.getElementById('r-total');
+  const mylineEl = document.getElementById('r-myline');
+  if (totalEl) totalEl.textContent = fmt(total);
+  if (mylineEl) mylineEl.textContent = fmt(mylinePrice) + ' once';
 }
 
 function setReceiptText(loc, t) {
@@ -1089,8 +1151,8 @@ function setReceiptText(loc, t) {
     es: {
       eyebrow: 'Lo que le has pagado a tu operadora',
       h2: '¿Cuántos años llevas pagando cada mes?',
-      input_label: 'Llevo',
-      years_label: 'años con mi operadora',
+      lbl_years: 'Años con operadora',
+      lbl_carrier: 'Mi operadora era',
       title: 'CUENTA DE TU OPERADORA',
       monthly: 'Plan mensual promedio',
       annual: 'Lo que pagas al año',
@@ -1100,8 +1162,8 @@ function setReceiptText(loc, t) {
     pt: {
       eyebrow: 'O que você pagou à sua operadora',
       h2: 'Há quantos anos você paga todo mês?',
-      input_label: 'Faz',
-      years_label: 'anos com minha operadora',
+      lbl_years: 'Anos com operadora',
+      lbl_carrier: 'Minha operadora era',
       title: 'CONTA DA SUA OPERADORA',
       monthly: 'Plano mensal médio',
       annual: 'O que você paga por ano',
@@ -1111,8 +1173,8 @@ function setReceiptText(loc, t) {
     en: {
       eyebrow: 'What you have paid your carrier',
       h2: 'How many years have you been paying monthly?',
-      input_label: 'Years with my carrier:',
-      years_label: 'years',
+      lbl_years: 'Years with carrier',
+      lbl_carrier: 'My carrier was',
       title: "YOUR CARRIER'S BILL",
       monthly: 'Average monthly plan',
       annual: 'What you pay per year',
@@ -1122,19 +1184,53 @@ function setReceiptText(loc, t) {
   };
   
   const rx = texts[loc.lang] || texts.en;
-  document.getElementById('receipt-eyebrow').textContent = rx.eyebrow;
-  document.getElementById('receipt-h2').textContent = rx.h2;
-  document.getElementById('receipt-input-label').textContent = rx.input_label;
-  document.getElementById('receipt-years-label').textContent = rx.years_label;
-  document.getElementById('receipt-title').textContent = rx.title;
-  document.getElementById('r-monthly-label').textContent = rx.monthly;
-  document.getElementById('r-annual-label').textContent = rx.annual;
-  document.getElementById('r-total-label').textContent = rx.total;
-  document.getElementById('receipt-note').textContent = rx.note;
+  const safe = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
+  safe('receipt-eyebrow', rx.eyebrow);
+  safe('receipt-h2', rx.h2);
+  safe('lbl-years', rx.lbl_years);
+  safe('lbl-carrier', rx.lbl_carrier);
+  safe('receipt-title', rx.title);
+  safe('r-total-label', rx.total);
+  safe('receipt-note', rx.note);
+
+  // Populate carrier options based on country
+  const carrierEl = document.getElementById('carrier-select');
+  if (carrierEl) {
+    const carriers = {
+      MX: [{n:'Telcel',v:299},{n:'AT&T',v:249},{n:'Movistar',v:229},{n:'Bait',v:149},{n:'Otro',v:199}],
+      CO: [{n:'Claro',v:35000},{n:'Movistar',v:32000},{n:'Tigo',v:28000},{n:'WOM',v:22000},{n:'Otro',v:25000}],
+      BR: [{n:'Vivo',v:49},{n:'Claro',v:45},{n:'TIM',v:39},{n:'Oi',v:35},{n:'Outro',v:42}],
+      ES: [{n:'Movistar',v:24.99},{n:'Vodafone',v:22.99},{n:'Orange',v:19.99},{n:'MásMóvil',v:14.99},{n:'Otro',v:19.99}],
+      US: [{n:'AT&T',v:29.99},{n:'Verizon',v:34.99},{n:'T-Mobile',v:24.99},{n:'Mint',v:15},{n:'Other',v:24.99}],
+      GB: [{n:'EE',v:19.99},{n:'O2',v:17.99},{n:'Vodafone',v:16.99},{n:'Three',v:14.99},{n:'Other',v:16.99}],
+      DEFAULT: [{n:'My carrier',v:24.99}]
+    };
+    const opts = carriers[Object.keys(carriers).find(k => k === (currentLoc ? Object.keys(LOCALE_DATA).find(c => LOCALE_DATA[c] === currentLoc) : 'DEFAULT')) || 'DEFAULT'] || carriers.DEFAULT;
+    carrierEl.innerHTML = opts.map(o => `<option value="${o.v}">${o.n}</option>`).join('');
+  }
+
   updateReceipt();
 }
 
-detectCountry().then(country => { renderPage(country); const loc = LOCALE_DATA[country] || LOCALE_DATA.DEFAULT; const t = T[loc.lang] || T.en; setReceiptText(loc, t); });
+detectCountry().then(country => {
+  try {
+    renderPage(country);
+    const loc = LOCALE_DATA[country] || LOCALE_DATA.DEFAULT;
+    const t = T[loc.lang] || T.en;
+    setReceiptText(loc, t);
+  } catch(e) {
+    console.error('Render error:', e);
+    // Fallback: try with DEFAULT
+    try {
+      renderPage('DEFAULT');
+      const loc = LOCALE_DATA['DEFAULT'];
+      const t = T['en'];
+      setReceiptText(loc, t);
+    } catch(e2) {
+      console.error('Fallback render error:', e2);
+    }
+  }
+});
 </script>
 </body>
 </html>
