@@ -651,6 +651,78 @@
 
   .footer-legal { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.7; }
   .footer-legal a { color: rgba(244,162,40,0.5); text-decoration: none; }
+
+  /* EARLY ACCESS COUNTDOWN BANNER */
+  .early-banner {
+    background: var(--sun);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    border-bottom: 2px solid var(--ink);
+    flex-wrap: wrap;
+  }
+  .early-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--forest);
+    color: var(--sun);
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+  .early-discount {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -1px;
+    white-space: nowrap;
+  }
+  .early-timer {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .timer-unit { text-align: center; min-width: 38px; }
+  .timer-unit span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--ink);
+    letter-spacing: -1px;
+    display: block;
+    line-height: 1;
+  }
+  .timer-unit small {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    color: rgba(15,31,23,0.55);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .timer-sep {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: rgba(15,31,23,0.5);
+    padding-bottom: 12px;
+    margin: 0 1px;
+  }
+  .early-cta {
+    background: var(--forest);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 9px 14px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+  }
 </style>
 </head>
 <body>
@@ -659,6 +731,22 @@
   <div class="nav-mark">My<span>Line</span></div>
   <button class="nav-cta" id="nav-cta" onclick="openModal()">—</button>
 </nav>
+
+<!-- EARLY ACCESS BANNER -->
+<div class="early-banner" id="earlyBanner" style="display:none">
+  <span class="early-badge" id="early-badge">Early Access</span>
+  <div class="early-discount">30% OFF</div>
+  <div class="early-timer">
+    <div class="timer-unit"><span id="cd-days">30</span><small id="cd-days-lbl">days</small></div>
+    <div class="timer-sep">:</div>
+    <div class="timer-unit"><span id="cd-hours">00</span><small id="cd-hrs-lbl">hrs</small></div>
+    <div class="timer-sep">:</div>
+    <div class="timer-unit"><span id="cd-mins">00</span><small id="cd-min-lbl">min</small></div>
+    <div class="timer-sep">:</div>
+    <div class="timer-unit"><span id="cd-secs">00</span><small id="cd-sec-lbl">sec</small></div>
+  </div>
+  <button onclick="openModal()" class="early-cta" id="early-cta">Claim discount →</button>
+</div>
 
 <section class="hero">
   <div class="hero-top">
@@ -778,7 +866,7 @@
     <button class="modal-close-btn" onclick="closeModal()">✕ close</button>
     <div class="modal-title" id="modal-title">—</div>
     <div class="modal-sub-text" id="modal-sub">—</div>
-    <form id="mlForm" action="https://formspree.io/f/XXXXXXXX" method="POST" onsubmit="submitForm(event)">
+    <form id="mlForm" action="https://formspree.io/f/xwvdqnqw" method="POST" onsubmit="submitForm(event)">
       <div class="field-group"><label class="field-label" id="lbl-name">—</label><input class="field-input" type="text" name="name" required></div>
       <div class="field-group"><label class="field-label" id="lbl-contact">—</label><input class="field-input" type="text" name="contact" required></div>
       <div class="field-group"><label class="field-label" id="lbl-plan">—</label><select class="field-input" name="plan" id="plan-select"></select></div>
@@ -849,6 +937,9 @@ const T = {
     modal_btn:'Reservar ahora →',
     success_title:'Estás en la lista.',
     success_body:'Te avisamos cuando tu número esté listo.',
+    early_badge:'Acceso Anticipado',
+    early_cta:'Obtener descuento →',
+    early_days:'días', early_hrs:'hrs', early_min:'min', early_sec:'seg',
     footer_legal:'© 2026 · Todos los derechos reservados · <a href="#">Privacidad</a> · <a href="#">Términos</a><br>WhatsApp® Meta Platforms, Inc. Uber® Uber Technologies, Inc. Las operadoras mencionadas son marcas registradas de sus dueños. MyLine no tiene afiliación con ninguna de estas empresas.'
   },
   pt: {
@@ -890,6 +981,9 @@ const T = {
     modal_btn:'Reservar agora →',
     success_title:'Você está na lista.',
     success_body:'Avisaremos quando seu número estiver pronto.',
+    early_badge:'Acesso Antecipado',
+    early_cta:'Obter desconto →',
+    early_days:'dias', early_hrs:'hrs', early_min:'min', early_sec:'seg',
     footer_legal:'© 2026 · Todos os direitos reservados · <a href="#">Privacidade</a> · <a href="#">Termos</a><br>WhatsApp® Meta Platforms, Inc. Uber® Uber Technologies, Inc. As operadoras mencionadas são marcas registradas de seus proprietários. MyLine não tem afiliação com nenhuma dessas empresas.'
   },
   en: {
@@ -931,6 +1025,9 @@ const T = {
     modal_btn:'Reserve now →',
     success_title:'You are on the list.',
     success_body:'We will reach out as soon as your number is ready.',
+    early_badge:'Early Access',
+    early_cta:'Claim discount →',
+    early_days:'days', early_hrs:'hrs', early_min:'min', early_sec:'sec',
     footer_legal:'© 2026 · All rights reserved · <a href="#">Privacy Policy</a> · <a href="#">Terms of Use</a><br>WhatsApp® is a registered trademark of Meta Platforms, Inc. Uber® is a registered trademark of Uber Technologies, Inc. All mentioned carriers are trademarks of their respective owners. MyLine has no affiliation with any of these companies.'
   }
 };
@@ -1067,6 +1164,15 @@ function renderPage(country) {
   document.getElementById('cta-btn2').textContent = t.cta_btn2;
 
   // Footer
+  // Early Access banner text
+  const setEarly = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+  setEarly('early-badge', t.early_badge);
+  setEarly('early-cta', t.early_cta);
+  setEarly('cd-days-lbl', t.early_days);
+  setEarly('cd-hrs-lbl', t.early_hrs);
+  setEarly('cd-min-lbl', t.early_min);
+  setEarly('cd-sec-lbl', t.early_sec);
+
   document.getElementById('footer-tagline').textContent = t.footer_tagline;
   document.getElementById('footer-legal').innerHTML = t.footer_legal;
 
@@ -1172,7 +1278,7 @@ function setReceiptText(loc, t) {
     },
     en: {
       eyebrow: 'What you have paid your carrier',
-      h2: 'How many years have you been paying monthly?',
+      h2: 'How many years have you been paying a monthly carrier bill?',
       lbl_years: 'Years with carrier',
       lbl_carrier: 'My carrier was',
       title: "YOUR CARRIER'S BILL",
@@ -1211,6 +1317,36 @@ function setReceiptText(loc, t) {
 
   updateReceipt();
 }
+
+// ─── EARLY ACCESS CONFIG ──────────────────────────────────────────────────────
+// Set EARLY_ACCESS_START to a date string (e.g. '2026-07-01T00:00:00') to activate.
+// Leave as null to keep the banner hidden.
+const EARLY_ACCESS_START = null;
+const EARLY_ACCESS_END   = '2026-07-29T23:59:59';
+// ─────────────────────────────────────────────────────────────────────────────
+
+(function() {
+  const banner = document.getElementById('earlyBanner');
+  if (!banner) return;
+  if (!EARLY_ACCESS_START) return;
+  const START = new Date(EARLY_ACCESS_START).getTime();
+  const END   = new Date(EARLY_ACCESS_END).getTime();
+  const pad = n => String(n).padStart(2, '0');
+  function tick() {
+    const now = Date.now();
+    if (now < START || now > END) { banner.style.display = 'none'; return; }
+    banner.style.display = 'flex';
+    const diff = END - now;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = pad(v); };
+    set('cd-days', d); set('cd-hours', h); set('cd-mins', m); set('cd-secs', s);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
 
 detectCountry().then(country => {
   try {
